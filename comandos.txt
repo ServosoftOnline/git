@@ -19,7 +19,7 @@
 
         - Clonar el respositorio publico en el repositorio local
             - Entrar en git bash
-            - Ir a la carpeta que lo contendrá y escribir: git clone https://github.com/servosoft2016/servosoft2016.github.io
+            - Ir a la carpeta que lo contendrá y escribir: git clone git clone https://github.com/ServosoftOnline/mern.git
             - Creará la carpeta repositorio local llamada servosoft2016.github.io
             - Añadimos el proyecto.
             - Si accedemos al sitio de internet servosoft2016.github.io Veremos el proyecto anterior
