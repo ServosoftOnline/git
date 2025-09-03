@@ -1,0 +1,45 @@
+Aquí tienes los pasos para crear un repositorio Git a partir de una carpeta de proyecto existente en tu PC, justo como lo necesitas para tu proyecto en Visual Studio:
+
+1.- Abre la terminal o línea de comandos:
+
+    - git init
+    Este comando crea una subcarpeta oculta llamada .git dentro de tu proyecto. Esta carpeta es la que almacena toda la información de control de versiones de Git.
+
+2.- Añade tus archivos al área de "staging" (preparación):
+
+    - git add .
+    (El punto . significa "todos los archivos y subcarpetas en el directorio actual").
+
+3.- Crea el primer "commit":
+
+    -git commit -m "Initial commit"
+
+4.- Crea el repositorio remoto en GitHub, GitLab, etc.:
+
+    - Ve a la plataforma que uses (GitHub, GitLab, Bitbucket) e inicia sesión.
+    - Busca la opción para crear un "nuevo repositorio" (New repository).
+    - Dale un nombre a tu repositorio (normalmente el mismo que tu proyecto local).
+
+    - Importante: Asegúrate de crearlo sin README, .gitignore o licencia, ya que ya tienes tus archivos en tu PC.
+
+5.- Conecta tu repositorio local con el remoto:
+
+    - Una vez que creas el repositorio en la plataforma te dará una URL para el repositorio
+        - (por ejemplo: https://github.com/tu_usuario/mi_proyecto.git).
+
+    - Copia esa URL y regresa a tu terminal.
+
+    - Ejecuta el siguiente comando para vincular tu repositorio local con el remoto:
+        - git remote add origin https://github.com/tu_usuario/mi_proyecto.git
+
+6.- Sube tus archivos al repositorio remoto:
+
+    - git push -u origin main
+
+    -u: Establece la rama main de tu repositorio remoto como la rama por defecto para tu rama local. Así, en el futuro solo necesitarás usar git push.
+
+    origin: El alias de tu repositorio remoto.
+
+    main: El nombre de la rama principal (antes era master, pero main es el estándar actual).
+
+¡Y listo! Tu repositorio local y remoto están sincronizados. A partir de ahora, puedes seguir tu flujo habitual: hacer cambios, git add, git commit y git push para actualizar el repositorio remoto.

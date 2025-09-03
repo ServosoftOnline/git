@@ -1,0 +1,80 @@
+MANUAL DE RAMAS DE GIT: CÓMO CREAR Y GESTIONAR UNA NUEVA VERSION DE TU PROYECTO
+
+Este manual te guiará paso a paso para que entiendas y uses las ramas de Git de forma efectiva, permitiéndote trabajar en nuevas funcionalidades o versiones de tu proyecto sin afectar la versión principal que está en funcionamiento.
+
+1. Entendiendo el Concepto de Rama:
+
+    Una rama en Git es, en esencia, una línea de tiempo de desarrollo independiente. Imagina tu proyecto como un árbol con un tronco principal (main). Cuando creas una rama, es como si hicieras una nueva rama del árbol. Puedes trabajar en ella libremente, añadir hojas o cortar ramas sin que afecte al tronco principal ni a las demás ramas. Una vez que tu trabajo está terminado, puedes fusionarlo de vuelta al tronco.
+
+    El objetivo principal de usar ramas es:
+
+        - Seguridad: Evitas hacer cambios que puedan romper la versión principal y funcional de tu proyecto.
+        - Paralelismo: Permite que tú (o un equipo) trabajen en múltiples características a la vez sin interferir entre sí.
+
+2. Guía Paso a Paso para una Nueva Versión
+
+    A continuación, te explico el proceso ideal para empezar a trabajar en la versión 2 de tu blog mientras la versión 1 sigue desplegada y funcionando.
+
+    Paso 1: Verificación de tu Estado Actual
+
+        Antes de empezar, asegúrate de estar en la rama correcta y de que tu repositorio local esté al día con el remoto.
+        Asegúrate de estar en la rama main:            
+            - git checkout main
+
+        Descarga los últimos cambios del repositorio remoto:            
+            - git pull
+
+    Paso 2: Crear y Cambiar a tu Nueva Rama
+
+        Este es el momento de crear tu línea de desarrollo paralela. Dale un nombre claro y descriptivo a tu rama.
+        Crea una nueva rama y cámbiate a ella en un solo comando:            
+            - git checkout -b nueva-version-2
+                Este comando es un atajo para git branch nueva-version-2 (crea la rama) y luego git checkout nueva-version-2 (cambia a ella). A partir de ahora, todos los cambios que hagas se guardarán en esta nueva rama.
+
+    Paso 3: Desarrollar y Guardar tus Cambios
+
+        Ahora que estás en la nueva rama, puedes empezar a trabajar en la versión 2 de tu blog.
+        Haz todos los cambios que necesites: Modifica archivos, añade nuevas secciones, cambia el diseño, etc.
+        Guarda tus cambios localmente: Cada vez que termines una parte de tu trabajo, usa estos comandos para hacer un commit:
+            
+            - # Añade todos los archivos modificados
+                git add . 
+
+            # Guarda los cambios con un mensaje claro
+                git commit -m "Empezando el nuevo diseno de la pagina de inicio"
+
+            Puedes repetir este proceso tantas veces como necesites mientras trabajas.
+
+    Paso 4: Subir la Rama al Repositorio Remoto
+
+        Cuando quieras hacer una copia de seguridad de tu trabajo o colaborar con alguien, debes subir la nueva rama a tu repositorio remoto.
+
+        Sube tu rama y configúrala para seguimiento:
+            -git push -u origin nueva-version-2
+            El parámetro -u (o --set-upstream) es clave. Le dice a Git que tu rama local nueva-version-2 debe "rastrear" la rama remota del mismo nombre. A partir de ese momento, un simple git push será suficiente.
+
+    Paso 5: Fusionar la Nueva Versión (Cuando Esté Lista)
+
+        Una vez que la versión 2 esté completa, funcional y lista para reemplazar a la antigua, debes fusionar los cambios de tu rama de trabajo con la rama main.
+
+        Cámbiate de nuevo a la rama principal:            
+            - git checkout main
+
+        Fusiona los cambios de la nueva rama en main:            
+            - git merge nueva-version-2
+            - Esto integra todos los commits de nueva-version-2 en tu rama principal.
+
+        Sube la rama main actualizada:            
+            - git push
+            Este último push actualizará la rama main en tu repositorio remoto, y si tu servicio de despliegue está configurado para ello, la nueva versión se publicará automáticamente.
+
+3. Consejos Adicionales y Buenas Prácticas
+
+    - Nombra tus ramas de forma descriptiva: Usa nombres como feature/nuevo-menu o fix/error-login para que sea fácil entender su propósito.
+
+    - Limpia tus ramas: Una vez que una rama ha sido fusionada y subida, es buena práctica borrarla para no saturar tu lista de ramas.
+
+    - Borrar la rama localmente: git branch -d nueva-version-2
+    - Borrar la rama remotamente: git push origin --delete nueva-version-2
+
+    - Mantén main limpia: Nunca trabajes directamente en la rama main. Úsala solo para fusiones de ramas que estén listas para producción.
